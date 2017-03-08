@@ -16,7 +16,7 @@ NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run)
 ```objc
 // 创建线程后自动启动线程[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];// 隐式创建并启动线程[self performSelectorInBackground:@selector(run) withObject:nil];
 ```
- 	- 优点：简单快捷	- 缺点：无法对线程进行更详细的设置
+- 优点：简单快捷- 缺点：无法对线程进行更详细的设置
 
 ##线程的状态
 
@@ -27,7 +27,7 @@ NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run)
 
 *注意：一旦线程停止（死亡）了，就不能再次开启任务*
 
-```
+```objc
 启动线程- (void)start; // 进入就绪状态 -> 运行状态。当线程任务执行完毕，自动进入死亡状态阻塞（暂停）线程+ (void)sleepUntilDate:(NSDate *)date;+ (void)sleepForTimeInterval:(NSTimeInterval)ti;// 进入阻塞状态强制停止线程+ (void)exit;// 进入死亡状态```
 
 ##多线程的安全隐患
@@ -39,7 +39,7 @@ NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run)
 
 -  使用格式
 	
-	```
+	```objc
 	@synchronized(锁对象) { // 需要锁定的代码  }
 	```	*注意：锁定1份代码只用1把锁，用多把锁是无效的*
 	   
@@ -65,7 +65,7 @@ NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run)
 
 2.线程间通信常用方法
 
-```- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait;- (void)performSelector:(SEL)aSelector onThread:(NSThread *)thr withObject:(id)arg waitUntilDone:(BOOL)wait;
+```objc- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait;- (void)performSelector:(SEL)aSelector onThread:(NSThread *)thr withObject:(id)arg waitUntilDone:(BOOL)wait;
 ```
 3.利用NSPort：复杂，不推荐 
 
