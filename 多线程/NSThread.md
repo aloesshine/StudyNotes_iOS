@@ -1,7 +1,7 @@
 
-#NSThread
+# NSThread
 
-##基本使用
+## 基本使用
 
 
 1.创建和启动线程
@@ -20,7 +20,7 @@ NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run)
 ```
 - 优点：简单快捷- 缺点：无法对线程进行更详细的设置
 
-##线程的状态
+## 线程的状态
 
 - **New（新建状态）** 执行 - start 方法 ---> **Runnable（就绪状态）**
 - **Runnable（就绪状态）** CPU调度当前线程 ---> **Running（运行状态）** ,调度其他线程 ---> **Runnable（就绪状态）**
@@ -32,7 +32,7 @@ NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run)
 ```objc
 启动线程- (void)start; // 进入就绪状态 -> 运行状态。当线程任务执行完毕，自动进入死亡状态阻塞（暂停）线程+ (void)sleepUntilDate:(NSDate *)date;+ (void)sleepForTimeInterval:(NSTimeInterval)ti;// 进入阻塞状态强制停止线程+ (void)exit;// 进入死亡状态```
 
-##多线程的安全隐患
+## 多线程的安全隐患
 
 1.多个线程可能会访问同一块资源
 	- 容易引发**数据错乱**和**数据安全**问题
@@ -48,7 +48,7 @@ NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run)
 - 优缺点	- 优点：能有效防止因多线程抢夺资源造成的数据安全问题	- 缺点：需要消耗大量的CPU资源	
 - 使用前提：多条线程抢夺同一块资源- **线程同步**
 	- 多条线程在同一条线上执行（按顺序地执行任务）	- 互斥锁，就是使用了线程同步技术
-	##原子和非原子属性
+	## 原子和非原子属性
 
 1.atomic
 
@@ -59,7 +59,7 @@ NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run)
 - 非原子属性，不会为setter方法加锁- 非线程安全，适合内存小的移动设备3.iOS开发的建议
 - 所有属性都声明为nonatomic- 尽量避免多线程抢夺同一块资源- 尽量将加锁、资源抢夺的业务逻辑交给服务器端处理，减小移动客户端的压力
 
-##线程间通信
+## 线程间通信
 
 1.体现
 
