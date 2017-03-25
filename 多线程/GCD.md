@@ -106,6 +106,13 @@ dispatch_apply(10, dispatch_get_global_queue(0, 0), ^(size_t) {
  });
 ```
 
+6.定时器
+
+```objc
+// 创建Timerself.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());// 设置定时器的触发时间（1秒后）和时间间隔（每隔2秒）dispatch_source_set_timer(self.timer, dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), 2 * NSEC_PER_SEC, 0);// 设置回调dispatch_source_set_event_handler(self.timer, ^{    NSLog(@"Timer %@", [NSThread currentThread]);});// 开始定时器dispatch_resume(self.timer);
+//取消定时器dispatch_cancel(self.timer);self.timer = nil;
+```
+
 ## 单例模式
 
 1.作用   
